@@ -7,5 +7,26 @@ Package Manager: npm 8.11.0
 OS: win32 x64
 
 *******************************
+            GITHUB
+*******************************
+git init
+git add .
+git commit -m "Estructura del Proyecto"
+git remote add origin https://github.com/1LLAURE2/sistema-transportes.git
+git push -u origin master
 
 *******************************
+        NG-ZORRO 13.4.0
+        ANGULAR MATERIAL 13.3.9
+*******************************
+npm install ng-zorro-antd
+
+ng add @angular/material
+npm uninstall @angular/material
+npm remove @angular/material
+npm delete @angular/material
+
+tambien falta desisntalar prime icons
+
+ng add @ng-bootstrap/ng-bootstrap
+npm uninstall @ng-bootstrap/ng-bootstrap

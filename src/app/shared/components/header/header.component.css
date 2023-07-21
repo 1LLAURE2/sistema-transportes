@@ -1,0 +1,13 @@
+nz-header {
+  /* background: #fff; */
+  background: #44d3c0;
+  padding: 0;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
