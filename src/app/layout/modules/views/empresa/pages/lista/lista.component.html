@@ -1,19 +1,45 @@
-<table>
-  <caption>Statement Summary</caption>
-  <thead>
-    <tr>
-      <th scope="col">Account</th>
-      <th scope="col">Due Date</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Period</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td data-label="Account">Visa - 3412</td>
-      <td data-label="Due Date">04/01/2016</td>
-      <td data-label="Amount">$1,190</td>
-      <td data-label="Period">03/01/2016 - 03/31/2016</td>
-    </tr>
-  </tbody>
-</table>
+<div class="row">
+  <button nz-button nzType="primary">
+    <span nz-icon nzType="plus"></span>
+    Nuevo
+  </button>
+</div>
+
+<div class="row">
+  <table>
+    <!-- <caption>Statement Summary</caption> -->
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">RUC</th>
+        <th scope="col">RAZON SOCIAL</th>
+        <th scope="col">ESTADO</th>
+        <th scope="col">ACCIONES</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let listaEmpresa of listado_de_Empresas">
+        <td data-label="ID">{{listaEmpresa.id}}</td>
+        <td data-label="RUC">{{listaEmpresa.emp_RUC}}</td>
+        <td data-label="RAZON SOCIAL">{{listaEmpresa.emp_razon_social}}</td>
+        <td data-label="ESTADO">
+          <nz-tag nzColor="{{listaEmpresa.emp_estado==='1'?'success':'error'}}">{{listaEmpresa.Estado_Empresa}}</nz-tag>
+        </td>
+        <td data-label="ACCIONES">
+          <div class="row" >
+              <!--  SHOW-->
+              <button nz-button nzType="default" nzShape="circle" (click)="mostrar()"><span nz-icon nzType="eye"></span></button>
+              <!-- UPDATE -->
+              <!-- [hidden]="listaEmpresa.emp_estado" -->
+              <!-- hidden="{{listaEmpresa.emp_estado=='1'?'true':'false'}}" -->
+              <button  nz-button nzType="primary" nzShape="circle" (click)="editar()"><span nz-icon nzType="edit"></span></button>
+              <!-- DELETE -->
+              <!-- hidden="{{listaEmpresa.emp_estado}}" -->
+              <button  nz-button nzType="primary" nzShape="circle" nzDanger="" (click)="eliminar(listaEmpresa.id!)"><span nz-icon nzType="delete"></span></button>    
+              <span>{{listaEmpresa.emp_estado| json}}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

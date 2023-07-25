@@ -12,6 +12,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 // import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
@@ -30,6 +31,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzIconModule,
     NzToolTipModule,
     NzButtonModule,
+    NzDropDownModule,
+    
   ]
 })
 export class ModulesModule { }

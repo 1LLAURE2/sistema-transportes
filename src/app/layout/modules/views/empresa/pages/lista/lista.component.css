@@ -7,10 +7,10 @@ table {
   table-layout: fixed;
 }
 
-table caption {
+/* table caption {
   font-size: 1.5em;
   margin: .5em 0 .75em;
-}
+} */
 
 table tr {
   background-color: #f8f8f8;
@@ -35,9 +35,9 @@ table th {
     border: 0;
   }
 
-  table caption {
+  /* table caption {
     font-size: 1.3em;
-  }
+  } */
 
   table thead {
     border: none;

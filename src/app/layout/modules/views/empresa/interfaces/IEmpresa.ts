@@ -26,4 +26,6 @@ export interface IEmpresa {
   tipo_servicio: ITipoServicio[]
   representante: IRepresentante[]
   autorizacion: IAutorizacion[]
+  //
+  Estado_Empresa:string
 }
