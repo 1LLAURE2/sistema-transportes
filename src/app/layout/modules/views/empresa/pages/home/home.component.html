@@ -1,0 +1,25 @@
+<!-- TODO: BOTON DE NUEVO -->
+<div class="row">
+    <button
+        nz-button nzType="primary"
+        (click)="abrirModal()"
+        >
+        <span nz-icon nzType="plus"></span>
+        Nuevo
+    </button>
+</div>
+<!-- TODO: SELECTOR DE LISTA DE EMPRESA -->
+<empresa-lista
+
+>
+
+</empresa-lista>
+
+<!-- TODO: SELECTOR DE MODAL -->
+<empresa-crear
+[isVisible]="isVisibleModal"
+(cerrarModal)="recepcionCloseModal($event)"
+[tituloModal]="titulo"
+>
+</empresa-crear>
+<!-- <button type="button" class="btn btn-primary">Primary</button> -->

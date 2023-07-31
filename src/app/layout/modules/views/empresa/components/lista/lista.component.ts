@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { EmpresaService } from '../../services/empresa.service';
 import { IEmpresa } from '../../interfaces/IEmpresa';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,21 +11,21 @@ export interface IRespuesta {
 }
 
 @Component({
-  selector: 'app-lista',
+  selector: 'empresa-lista',
   templateUrl: './lista.component.html',
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
+  
   //* VARIABLES
   listado_de_Empresas:IEmpresa[]=[];
 
+
   constructor(private empresaServicio:EmpresaService){}
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-    console.log('ngOnInit');
     this.listarEmpresa();
-    console.log('Fin ngOnInit');
   }
+
 
   private listarEmpresa(){
     this.listado_de_Empresas=[];

@@ -1,0 +1,235 @@
+<!-- <button nz-button [nzType]="'primary'" (click)="showModal()">
+    <span>Show Modal</span>
+</button> -->
+<!-- nzWidth="600" -->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="{{tituloModal}}"
+  (nzOnCancel)="emisionNuevoValorModal(false)"
+  (nzOnOk)="guardarFormulario()"
+>
+  <ng-container *nzModalContent>
+    <!--  -->
+    <form [formGroup]="formularioEmpresa" >
+      <!-- <nz-form-label [nzSpan]="6" nzFor="ruc">RUC</nz-form-label>
+      <input nz-input placeholder="Basic usage"  placeholder="Ingrese el RUC"/> -->
+      <!--  -->
+      <!--  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" -->
+      <!-- <div nz-row>
+        <div nz-col class="gutter-row">
+          <nz-form-item>
+            <nz-form-label nzRequired nzLabelAlign="left" nzSpan="8">RUC</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your username!" nzSpan="8">
+              <input formControlName="userName" nz-input placeholder="Username" />
+            </nz-form-control>
+          </nz-form-item>
+        </div> -->
+      <!--  -->
+      <!-- <div nz-col class="gutter-row">
+          <nz-form-item>
+            <nz-form-label nzRequired nzLabelAlign="left" nzSpan="8">Razón Social</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your razonSocial!" nzSpan="8">
+              <input formControlName="razonSocial" nz-input placeholder="razonSocial" />
+            </nz-form-control>
+          </nz-form-item>
+        </div> 
+      </div>-->
+      <!--  -->
+      <!-- <div nz-row>
+        <div class="col-6">
+          <label for="ruc">RUC</label>
+          <input
+            type="text"
+            id="ruc"
+            class="form-control"
+            placeholder="Ingrese RUC"
+          />
+        </div>
+        <div class="col-6">
+          <label for="razonSocial">Razón Social</label>
+          <input
+            type="text"
+            id="razonSocial"
+            class="formControlName"
+            placeholder="Razón Social"
+          />
+        </div>
+      </div> -->
+      <!-- csacscsa -->
+      <!-- <div nz-row>
+
+      </div>-->
+      <!--  -->
+      <div class="row">
+        <div class="col">
+          <label for="ruc">RUC</label>
+          <input
+            type="text"
+            id="ruc"
+            formControlName="empresa_ruc"
+            class="form-control"
+            placeholder="Ingrese RUC"
+          />
+          <span *ngIf="formularioEmpresa.controls['empresa_ruc'].getError('required') && formularioEmpresa.controls['empresa_ruc'].touched" class="form-text text-danger">
+            *Este Campo es requerido
+          </span>
+        </div>
+        <div class="col">
+          <label for="razonSocial">Razón Social</label>
+          <input
+            type="text"
+            id="razonSocial"
+            formControlName="empresa_razon_social"
+            class="form-control"
+            placeholder="Razón Social"
+          />
+          <span *ngIf="formularioEmpresa.controls['empresa_razon_social'].getError('required') && formularioEmpresa.controls['empresa_razon_social'].touched" class="form-text text-danger">
+            *Este Campo es requerido
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="abreviatura">Abreviatura</label>
+          <input
+            type="text"
+            id="abreviatura"
+            class="form-control"
+            formControlName="empresa_abreviatura"
+            placeholder="Ingrese Abreviatura"
+          />
+          <span *ngIf="formularioEmpresa.controls['empresa_abreviatura'].getError('required') && formularioEmpresa.controls['empresa_abreviatura'].touched" class="form-text text-danger">
+            *Este Campo es requerido
+          </span>
+        </div>
+        <div class="col">
+          <label for="nIncripcion">Nº Inscripcion SUNARP</label>
+          <input
+            type="text"
+            id="nIncripcion"
+            formControlName="empresa_inscripcion"
+            class="form-control"
+            placeholder="Iingrese Numero de Incripcion"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="lugarIncripcion">Lugar Inscripcion</label>
+          <input
+            type="text"
+            id="lugarIncripcion"
+            formControlName="empresa_lugar_inscripcion"
+            class="form-control"
+            placeholder="Ingrese Lugar de Inscripcion"
+          />
+        </div>
+        <div class="col">
+          <label for="nMzLt">Nº/Mz/Lt</label>
+          <input
+            type="text"
+            id="nMzLt"
+            formControlName="empresa_mz"
+            class="form-control"
+            placeholder="Ingrese Nª - Mz - Lt"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="telefono">Telefono</label>
+          <input
+            type="text"
+            id="telefono"
+            formControlName="empresa_telefono"
+            class="form-control"
+            placeholder="Ingrese Nº Telefono"
+          />
+        </div>
+        <div class="col">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="empresa_email"
+            class="form-control"
+            placeholder="Ingrese E-mail"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="partidaElectronica">Partida Electronica SUNARP</label>
+          <input
+            type="text"
+            id="partidaElectronica"
+            formControlName="empresa_partida_electronica"
+            class="form-control"
+            placeholder="Ingrese Partida Electronica"
+          />
+        </div>
+        <div class="col">
+          <label for="fechaInscripcion">Fecha Inscripcion SUNARP</label>
+          <input type="date" id="fechaInscripcion" formControlName="empresa_fecha_incripcion" class="form-control" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="nombreVia">Nombre de Via</label>
+          <input
+            type="text"
+            id="nombreVia"
+            formControlName="empresa_nombre_via"
+            class="form-control"
+            placeholder="Ingrese Nombre Via"
+          />
+        </div>
+        <div class="col">
+          <label for="loteInterno">Lote Interno</label>
+          <input
+            type="text"
+            id="loteInterno"
+            formControlName="empresa_lote_interno"
+            class="form-control"
+            placeholder="Ingrese Lote Int."
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="nombreUrba">Nombre de Urb.</label>
+          <input
+            type="text"
+            id="nombreUrba"
+            formControlName="empresa_nombre_urb"
+            class="form-control"
+            placeholder="Ingrese Nombre de Urb."
+          />
+        </div>
+        <div class="col">
+          <label for="url">URL</label>
+          <input
+            type="text"
+            id="url"
+            formControlName="empresa_url"
+            class="form-control"
+            placeholder="Ingrese URL"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="referencia">Referencia</label>
+          <input
+            type="text"
+            id="referencia"
+            formControlName="empresa_referencia"
+            class="form-control"
+            placeholder="Ingrese referencia"
+          />
+        </div>
+      </div>
+    </form>
+    <!--  -->
+  </ng-container>
+</nz-modal>
