@@ -27,9 +27,9 @@ export class ListaComponent implements OnInit {
     this.listarEmpresa();
     this.estadoModal.emit(false);
   }
-
-
-  private listarEmpresa(){
+  
+  
+  private listarEmpresa():void{
     this.listado_de_Empresas=[];
     this.empresaServicio.getEmpresa().subscribe({
       next:(respuesta:IRespuesta)=>{
@@ -57,20 +57,21 @@ export class ListaComponent implements OnInit {
   }
 
   aperturar_modal(){
-    // this.tituloLista.emit(texto);
     this.estadoModal.emit(true);
   }
 
-  mostrar(){
+  mostrar(idEmpresa:number){
     // this.aperturar_modal("Mostrar Empresa");
     this.aperturar_modal()
     this.tituloLista.emit("MOSTRAR");
+    console.log("MOSTRAR ID: ",idEmpresa)
   }
 
-  editar(){
+  editar(idEmpresa:number){
     // this.aperturar_modal("Editar Empresa");
     this.aperturar_modal()
     this.tituloLista.emit("EDITAR");
+    console.log("EDITAR ID: ",idEmpresa)
   }
   nuevo(){
     this.aperturar_modal()
@@ -79,6 +80,7 @@ export class ListaComponent implements OnInit {
 
   eliminar(idEmpresa:number){
     //TODO: PARA ELIMINAR PREVIAMENTO DEBO INGRESAR DOCUMENTO
+    //!PRIMERO UN MODAL ESPECIFICO PARA ELIMINAR 
     this.empresaServicio.deleteEmpresa(idEmpresa).subscribe({
       next:(respuesta)=>{
         console.log(respuesta);

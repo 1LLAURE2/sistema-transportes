@@ -1,5 +1,5 @@
 <!-- TODO: BOTON DE NUEVO -->
-<div class="row">
+<div class="row-4">
   <button
       nz-button nzType="primary"
       (click)="nuevo()"
@@ -32,15 +32,15 @@
         <td data-label="ACCIONES">
           <div class="row" >
               <!--  SHOW-->
-              <button nz-button nzType="default" nzShape="circle" (click)="mostrar()"><span nz-icon nzType="eye"></span></button>
+              <button nz-button nzType="default" nzShape="circle" (click)="mostrar(listaEmpresa.id!)"><span nz-icon nzType="eye"></span></button>
               <!-- UPDATE -->
               <!-- [hidden]="listaEmpresa.emp_estado" -->
               <!-- hidden="{{listaEmpresa.emp_estado=='1'?'true':'false'}}" -->
-              <button  nz-button nzType="primary" nzShape="circle" (click)="editar()"><span nz-icon nzType="edit"></span></button>
+              <button *ngIf="listaEmpresa.emp_estado==='1'" nz-button nzType="primary" nzShape="circle" (click)="editar(listaEmpresa.id!)"><span nz-icon nzType="edit"></span></button>
               <!-- DELETE -->
               <!-- hidden="{{listaEmpresa.emp_estado}}" -->
-              <button  nz-button nzType="primary" nzShape="circle" nzDanger="" (click)="eliminar(listaEmpresa.id!)"><span nz-icon nzType="delete"></span></button>    
-              <span>{{listaEmpresa.emp_estado| json}}</span>
+              <button *ngIf="listaEmpresa.emp_estado==='1'" nz-button nzType="primary" nzShape="circle" nzDanger="" (click)="eliminar(listaEmpresa.id!)"><span nz-icon nzType="delete"></span></button>    
+              <!-- <span>{{listaEmpresa.emp_estado| json}}</span> -->
           </div>
         </td>
       </tr>

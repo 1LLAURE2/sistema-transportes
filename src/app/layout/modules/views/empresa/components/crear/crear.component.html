@@ -7,6 +7,9 @@
   nzTitle="{{tituloModal}}"
   (nzOnCancel)="emisionNuevoValorModal(false)"
   (nzOnOk)="guardarFormulario()"
+  [nzMaskClosable]="false"
+  nzWidth=600px
+  [nzStyle]="{ top: '10px' }"
 >
   <ng-container *nzModalContent>
     <!--  -->
