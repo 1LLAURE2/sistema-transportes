@@ -1,15 +1,8 @@
-<!-- TODO: BOTON DE NUEVO -->
-<div class="row">
-    <button
-        nz-button nzType="primary"
-        (click)="abrirModal()"
-        >
-        <span nz-icon nzType="plus"></span>
-        Nuevo
-    </button>
-</div>
+
 <!-- TODO: SELECTOR DE LISTA DE EMPRESA -->
 <empresa-lista
+(estadoModal)="recibirEstadoModal($event)"
+(tituloLista)="recibirTitulo($event)"
 
 >
 
@@ -19,7 +12,7 @@
 <empresa-crear
 [isVisible]="isVisibleModal"
 (cerrarModal)="recepcionCloseModal($event)"
-[tituloModal]="titulo"
+[tituloModal]="cabeceraModal"
 >
 </empresa-crear>
 <!-- <button type="button" class="btn btn-primary">Primary</button> -->

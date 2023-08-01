@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,21 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public titulo:string="";
-
+  @Input() cabeceraModal:string="NO HAY NADA AUN";
+  @Input() isVisibleModal!:boolean;
+  
   constructor() { }
 
-  public isVisibleModal:boolean=false
 
   ngOnInit(): void {
   }
-
-  public abrirModal():void{
-    this.isVisibleModal=true;    
-    this.titulo="Adicionar una Nueva Empresa"
-  }
+  
   public recepcionCloseModal(valorModalRecibido:boolean):void{
     this.isVisibleModal=valorModalRecibido;
+    console.log(this.isVisibleModal);
+  }
+
+  public recibirTitulo(text:string):void{
+    this.cabeceraModal=text;
+    console.log(this.cabeceraModal);
+  }
+  public recibirEstadoModal(estado:boolean):void{
+    this.isVisibleModal=estado;
     console.log(this.isVisibleModal);
   }
 

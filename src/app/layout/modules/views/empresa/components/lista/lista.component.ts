@@ -19,11 +19,13 @@ export class ListaComponent implements OnInit {
   
   //* VARIABLES
   listado_de_Empresas:IEmpresa[]=[];
-
+  @Output() tituloLista=new EventEmitter<string>();
+  @Output() estadoModal=new EventEmitter<boolean>();
 
   constructor(private empresaServicio:EmpresaService){}
   ngOnInit(): void {
     this.listarEmpresa();
+    this.estadoModal.emit(false);
   }
 
 
@@ -32,7 +34,7 @@ export class ListaComponent implements OnInit {
     this.empresaServicio.getEmpresa().subscribe({
       next:(respuesta:IRespuesta)=>{
         (respuesta.data).forEach((empresa:IEmpresa) => {
-          console.log(empresa);
+          // console.log(empresa);
           this.listado_de_Empresas.push({
             ...empresa,
             // TODO: ? LO IGUALO A "1" PORQUE SI FUERA BOOLEAN NO DEBERIA TENER
@@ -54,12 +56,25 @@ export class ListaComponent implements OnInit {
     });
   }
 
+  aperturar_modal(){
+    // this.tituloLista.emit(texto);
+    this.estadoModal.emit(true);
+  }
+
   mostrar(){
-    console.log("Mostrar");
+    // this.aperturar_modal("Mostrar Empresa");
+    this.aperturar_modal()
+    this.tituloLista.emit("MOSTRAR");
   }
 
   editar(){
-    console.log("Editar");
+    // this.aperturar_modal("Editar Empresa");
+    this.aperturar_modal()
+    this.tituloLista.emit("EDITAR");
+  }
+  nuevo(){
+    this.aperturar_modal()
+    this.tituloLista.emit("NUEVO");
   }
 
   eliminar(idEmpresa:number){
