@@ -1,68 +1,15 @@
-<!-- <button nz-button [nzType]="'primary'" (click)="showModal()">
-    <span>Show Modal</span>
-</button> -->
-<!-- nzWidth="600" -->
 <nz-modal
   [(nzVisible)]="isVisible"
-  nzTitle="{{tituloModal}}"
+  nzTitle="{{ tituloModal }}"
   (nzOnCancel)="emisionNuevoValorModal(false)"
   (nzOnOk)="guardarFormulario()"
   [nzMaskClosable]="false"
-  nzWidth=600px
+  nzWidth="700px"
   [nzStyle]="{ top: '10px' }"
 >
   <ng-container *nzModalContent>
     <!--  -->
-    <form [formGroup]="formularioEmpresa" >
-      <!-- <nz-form-label [nzSpan]="6" nzFor="ruc">RUC</nz-form-label>
-      <input nz-input placeholder="Basic usage"  placeholder="Ingrese el RUC"/> -->
-      <!--  -->
-      <!--  [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" -->
-      <!-- <div nz-row>
-        <div nz-col class="gutter-row">
-          <nz-form-item>
-            <nz-form-label nzRequired nzLabelAlign="left" nzSpan="8">RUC</nz-form-label>
-            <nz-form-control nzErrorTip="Please input your username!" nzSpan="8">
-              <input formControlName="userName" nz-input placeholder="Username" />
-            </nz-form-control>
-          </nz-form-item>
-        </div> -->
-      <!--  -->
-      <!-- <div nz-col class="gutter-row">
-          <nz-form-item>
-            <nz-form-label nzRequired nzLabelAlign="left" nzSpan="8">Razón Social</nz-form-label>
-            <nz-form-control nzErrorTip="Please input your razonSocial!" nzSpan="8">
-              <input formControlName="razonSocial" nz-input placeholder="razonSocial" />
-            </nz-form-control>
-          </nz-form-item>
-        </div> 
-      </div>-->
-      <!--  -->
-      <!-- <div nz-row>
-        <div class="col-6">
-          <label for="ruc">RUC</label>
-          <input
-            type="text"
-            id="ruc"
-            class="form-control"
-            placeholder="Ingrese RUC"
-          />
-        </div>
-        <div class="col-6">
-          <label for="razonSocial">Razón Social</label>
-          <input
-            type="text"
-            id="razonSocial"
-            class="formControlName"
-            placeholder="Razón Social"
-          />
-        </div>
-      </div> -->
-      <!-- csacscsa -->
-      <!-- <div nz-row>
-
-      </div>-->
-      <!--  -->
+    <form [formGroup]="formularioEmpresa">
       <div class="row">
         <div class="col">
           <label for="ruc">RUC</label>
@@ -73,7 +20,13 @@
             class="form-control"
             placeholder="Ingrese RUC"
           />
-          <span *ngIf="formularioEmpresa.controls['empresa_ruc'].getError('required') && formularioEmpresa.controls['empresa_ruc'].touched" class="form-text text-danger">
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_ruc'].getError('required') &&
+              formularioEmpresa.controls['empresa_ruc'].touched
+            "
+            class="form-text text-danger"
+          >
             *Este Campo es requerido
           </span>
         </div>
@@ -86,7 +39,14 @@
             class="form-control"
             placeholder="Razón Social"
           />
-          <span *ngIf="formularioEmpresa.controls['empresa_razon_social'].getError('required') && formularioEmpresa.controls['empresa_razon_social'].touched" class="form-text text-danger">
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_razon_social'].getError(
+                'required'
+              ) && formularioEmpresa.controls['empresa_razon_social'].touched
+            "
+            class="form-text text-danger"
+          >
             *Este Campo es requerido
           </span>
         </div>
@@ -101,7 +61,14 @@
             formControlName="empresa_abreviatura"
             placeholder="Ingrese Abreviatura"
           />
-          <span *ngIf="formularioEmpresa.controls['empresa_abreviatura'].getError('required') && formularioEmpresa.controls['empresa_abreviatura'].touched" class="form-text text-danger">
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_abreviatura'].getError(
+                'required'
+              ) && formularioEmpresa.controls['empresa_abreviatura'].touched
+            "
+            class="form-text text-danger"
+          >
             *Este Campo es requerido
           </span>
         </div>
@@ -114,6 +81,16 @@
             class="form-control"
             placeholder="Iingrese Numero de Incripcion"
           />
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_inscripcion'].getError(
+                'required'
+              ) && formularioEmpresa.controls['empresa_inscripcion'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
         </div>
       </div>
       <div class="row">
@@ -126,6 +103,16 @@
             class="form-control"
             placeholder="Ingrese Lugar de Inscripcion"
           />
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_lugar_inscripcion'].getError(
+                'required'
+              ) && formularioEmpresa.controls['empresa_lugar_inscripcion'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
         </div>
         <div class="col">
           <label for="nMzLt">Nº/Mz/Lt</label>
@@ -136,6 +123,15 @@
             class="form-control"
             placeholder="Ingrese Nª - Mz - Lt"
           />
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_mz'].getError('required') &&
+              formularioEmpresa.controls['empresa_mz'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
         </div>
       </div>
       <div class="row">
@@ -148,6 +144,16 @@
             class="form-control"
             placeholder="Ingrese Nº Telefono"
           />
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_telefono'].getError(
+                'required'
+              ) && formularioEmpresa.controls['empresa_telefono'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
         </div>
         <div class="col">
           <label for="email">E-mail</label>
@@ -158,6 +164,16 @@
             class="form-control"
             placeholder="Ingrese E-mail"
           />
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_email'].getError(
+                'required'
+              ) && formularioEmpresa.controls['empresa_email'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
         </div>
       </div>
       <div class="row">
@@ -170,10 +186,37 @@
             class="form-control"
             placeholder="Ingrese Partida Electronica"
           />
+          <span
+            *ngIf="
+              formularioEmpresa.controls[
+                'empresa_partida_electronica'
+              ].getError('required') &&
+              formularioEmpresa.controls['empresa_partida_electronica'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
         </div>
         <div class="col">
           <label for="fechaInscripcion">Fecha Inscripcion SUNARP</label>
-          <input type="date" id="fechaInscripcion" formControlName="empresa_fecha_incripcion" class="form-control" />
+          <input
+            type="date"
+            id="fechaInscripcion"
+            formControlName="empresa_fecha_incripcion"
+            class="form-control"
+          />
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_fecha_incripcion'].getError(
+                'required'
+              ) &&
+              formularioEmpresa.controls['empresa_fecha_incripcion'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
         </div>
       </div>
       <div class="row">
@@ -230,6 +273,36 @@
             class="form-control"
             placeholder="Ingrese referencia"
           />
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_referencia'].getError(
+                'required'
+              ) && formularioEmpresa.controls['empresa_referencia'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este Campo es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="empresa_servicio">Servicio</label>
+          <select id="empresa_servicio" class="form-select" aria-label="Default select example">
+            <option selected>SELECCIONE</option>
+            <option value="1">Publico</option>
+            <option value="2">Privado</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="empresa_tipo_servicio">Tipo de Servicio</label>
+          <select id="empresa_tipo_servicio" class="form-select" aria-label="Default select example">
+            <option selected>SELECCIONE</option>
+            <option value="1">Personas</option>
+            <option value="2">Mercancias</option>
+            <option value="3">Turismo</option>
+          </select>
         </div>
       </div>
     </form>

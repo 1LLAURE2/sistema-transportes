@@ -3,16 +3,17 @@
 <empresa-lista
 (estadoModal)="recibirEstadoModal($event)"
 (tituloLista)="recibirTitulo($event)"
-
+[empresa]="listado_de_Empresas"
 >
 
 </empresa-lista>
 
 <!-- TODO: SELECTOR DE MODAL -->
+<!-- (newEmpresa)="nuevaEmpresa($event)" -->
 <empresa-crear
 [isVisible]="isVisibleModal"
 (cerrarModal)="recepcionCloseModal($event)"
 [tituloModal]="cabeceraModal"
+(datoFormulario)="recepcionNuevaEmpresa($event)"
 >
 </empresa-crear>
-<!-- <button type="button" class="btn btn-primary">Primary</button> -->

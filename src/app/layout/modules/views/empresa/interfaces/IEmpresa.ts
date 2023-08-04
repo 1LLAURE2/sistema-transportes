@@ -15,17 +15,17 @@ export interface IEmpresa {
   emp_telefono: string
   emp_email: string
   emp_partida_electronica_SUNARP: string
-  emp_fec_inscripcion_SUNARP: string
+  emp_fec_inscripcion_SUNARP: Date
   emp_nombre_via: string
   emp_lote_int: string
   emp_nom_urba: string
   emp_URL: string
   emp_referencia: string
   emp_estado: string
-  servicio: IServicio[]
-  tipo_servicio: ITipoServicio[]
-  representante: IRepresentante[]
-  autorizacion: IAutorizacion[]
+  servicio_id: number
+  tipo_servicio_id: number
+  // representante: IRepresentante[]
+  // autorizacion: IAutorizacion[]
   //
-  Estado_Empresa:string
+  Estado_Empresa?:string
 }
