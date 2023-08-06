@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { EmpresaService } from '../../services/empresa.service';
 import { IEmpresa } from '../../interfaces/IEmpresa';
 import { HttpErrorResponse } from '@angular/common/http';
+import { identifierName } from '@angular/compiler';
 
 export interface IRespuesta {
   code: number,
@@ -24,8 +25,9 @@ export class ListaComponent implements OnInit {
   
   //?FALTA USAR ESTOS DOS VARIABLES
   @Input() empresa:IEmpresa[]=[];//*Ingresa los datos desde el home
-  @Output() datoEmpresa=new EventEmitter<IEmpresa>(); //Devuelve el arreglo al home
+  @Output() actualizarEmpresa=new EventEmitter<IEmpresa[]>(); //Devuelve el arreglo al home
 
+  //
   constructor(private empresaServicio:EmpresaService){}
   ngOnInit(): void {
     // this.listarEmpresa();
@@ -67,7 +69,7 @@ export class ListaComponent implements OnInit {
   mostrar(idEmpresa:number){
     // this.aperturar_modal("Mostrar Empresa");
     this.aperturar_modal()
-    this.tituloLista.emit("MOSTRAR");
+    this.tituloLista.emit("MOSTRAR EMPRESA");
     console.log("MOSTRAR ID: ",idEmpresa)
     // console.log(this.empresa.filter((dato)=>{
     //   dato.id=5
@@ -77,12 +79,21 @@ export class ListaComponent implements OnInit {
   editar(idEmpresa:number){
     // this.aperturar_modal("Editar Empresa");
     this.aperturar_modal()
-    this.tituloLista.emit("EDITAR");
-    console.log("EDITAR ID: ",idEmpresa)
+    this.tituloLista.emit("ACTUALIZAR EMPRESA");
+    
+    if(idEmpresa===null) return; //SI NO EXISTE UN ID NO HACE NADA Y TERMINA
+    // const cd=this.empresa.map((o)=>o.id); //ME DEVUELVE TODOS LOS INDICES
+    // const cd=this.empresa.find((o)=>o.id); //RETORNA EL PRIMER ELEMENTO DE LA LISTA
+    // this.empresa=this.empresa.filter((o)=>o.id==idEmpresa); // FILTRA LA BUSQUEDA DEL OBJETO
+
+    const objetoEmpresa=this.empresa.filter((o)=>o.id==idEmpresa); // FILTRA LA EMPRESA
+    // console.log("CD: ",objetoEmpresa);
+    this.actualizarEmpresa.emit(objetoEmpresa);
+    // console.log("EDITAR ID: ",idEmpresa);
   }
   nuevo(){
     this.aperturar_modal()
-    this.tituloLista.emit("NUEVO");
+    this.tituloLista.emit("CREAR EMPRESA");
   }
 
   eliminar(idEmpresa:number){

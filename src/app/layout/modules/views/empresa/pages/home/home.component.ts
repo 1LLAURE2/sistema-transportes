@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   @Input() isVisibleModal!: boolean;
 
   listado_de_Empresas: IEmpresa[] = [];
-  // mostrarEmpresa:IEmpresa[]=[];
+  mostrarEmpresa:IEmpresa[]=[];
   nuevaEmpresa!: IEmpresa;
 
   constructor(private empresaServicio: EmpresaService) {}
@@ -38,6 +38,12 @@ export class HomeComponent implements OnInit {
     this.nuevaEmpresa = newEmpresa;
     console.log(this.nuevaEmpresa);
     this.registrarEmpresa(this.nuevaEmpresa);
+  }
+
+  public recepcionoEmpreaActualizar(updateEmpresa:IEmpresa[]):void{
+    if(updateEmpresa===null) return;
+    this.mostrarEmpresa=updateEmpresa;
+    console.log("Home: ",this.mostrarEmpresa);
   }
 
   public recibirTitulo(text: string): void {
