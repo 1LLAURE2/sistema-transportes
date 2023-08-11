@@ -1,11 +1,14 @@
 
 <!-- TODO: SELECTOR DE LISTA DE EMPRESA -->
 <!-- (actualizarEmpresa)="recibirEmpresaActualizar($event)" -->
+<!-- (empresaEliminar)=eliminarEmpresa($event) -->
+<!-- operacion=accion($event) -->
 <empresa-lista
-(estadoModal)="recibirEstadoModal($event)"
-(tituloLista)="recibirTitulo($event)"
+(estadoModal)="EstadoModal($event)"
+(tituloLista)="Titulo($event)"
+(operacion)="accion($event)"
 [empresa]="listado_de_Empresas"
-(actualizarEmpresa)="recepcionoEmpreaActualizar($event)"
+(actualizarEmpresa)="EmpresaActualizar($event)"
 >
 
 </empresa-lista>
@@ -13,9 +16,10 @@
 <!-- TODO: SELECTOR DE MODAL -->
 <empresa-crear
 [isVisible]="isVisibleModal"
-(cerrarModal)="recepcionCloseModal($event)"
+(cerrarModal)="cerrarModal($event)"
 [tituloModal]="cabeceraModal"
-(datoFormulario)="recepcionNuevaEmpresa($event)"
-[datoInterfazEdit]="mostrarEmpresa"
+[esRegistro]="operacion"
+(CrearActualizarEmpresa)="NuevaActualizarEmpresa($event)"
+[empresaUtilizadaModal]="mostrarEmpresa"
 >
 </empresa-crear>

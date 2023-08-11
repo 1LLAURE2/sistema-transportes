@@ -2,7 +2,7 @@
   [(nzVisible)]="isVisible"
   nzTitle="{{ tituloModal }}"
   (nzOnCancel)="emisionNuevoValorModal(false)"
-  (nzOnOk)="guardarFormulario()"
+  (nzOnOk)="enviarDatosDelFormulario()"
   [nzMaskClosable]="false"
   nzWidth="700px"
   [nzStyle]="{ top: '10px' }"
@@ -29,6 +29,25 @@
           >
             *Este Campo es requerido
           </span>
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_ruc'].getError('maxlength') &&
+              formularioEmpresa.controls['empresa_ruc'].touched
+            "
+            class="form-text text-danger"
+          >
+            *Este campo debe tener un maximo de 11 numeros
+          </span>
+          <span
+            *ngIf="
+              formularioEmpresa.controls['empresa_ruc'].getError('minlength') &&
+              formularioEmpresa.controls['empresa_ruc'].touched
+            "
+            class="form-text text-danger"
+          >
+          *Este campo debe tener un minimo de 11 numeros
+          </span>
+          <!--  -->
         </div>
         <div class="col">
           <label for="razonSocial">Razón Social</label>
@@ -289,7 +308,7 @@
       <div class="row">
         <div class="col">
           <label for="empresa_servicio">Servicio</label>
-          <select id="empresa_servicio" class="form-select" aria-label="Default select example">
+          <select id="empresa_servicio" formControlName="empresa_servicio" class="form-select" aria-label="Default select example">
             <option selected>SELECCIONE</option>
             <option value="1">Publico</option>
             <option value="2">Privado</option>
@@ -297,7 +316,7 @@
         </div>
         <div class="col">
           <label for="empresa_tipo_servicio">Tipo de Servicio</label>
-          <select id="empresa_tipo_servicio" class="form-select" aria-label="Default select example">
+          <select id="empresa_tipo_servicio" formControlName="empresa_tipo_servicio" class="form-select" aria-label="Default select example">
             <option selected>SELECCIONE</option>
             <option value="1">Personas</option>
             <option value="2">Mercancias</option>
@@ -308,7 +327,7 @@
     </form>
     <!--  -->
     <div>
-      {{datoInterfazEdit|json}}
+      {{esRegistro|json}}
     </div>
   </ng-container>
 </nz-modal>

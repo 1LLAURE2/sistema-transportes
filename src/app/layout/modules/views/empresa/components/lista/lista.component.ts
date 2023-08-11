@@ -19,13 +19,12 @@ export interface IRespuesta {
 export class ListaComponent implements OnInit {
   
   //* VARIABLES
-  // listado_de_Empresas:IEmpresa[]=[];
   @Output() tituloLista=new EventEmitter<string>();
   @Output() estadoModal=new EventEmitter<boolean>();
-  
-  //?FALTA USAR ESTOS DOS VARIABLES
+  @Output() operacion=new EventEmitter<boolean>();
+
   @Input() empresa:IEmpresa[]=[];//*Ingresa los datos desde el home
-  @Output() actualizarEmpresa=new EventEmitter<IEmpresa[]>(); //Devuelve el arreglo al home
+  @Output() actualizarEmpresa=new EventEmitter<IEmpresa>(); //*Devuelve la empresa seleccionada
 
   //
   constructor(private empresaServicio:EmpresaService){}
@@ -76,24 +75,26 @@ export class ListaComponent implements OnInit {
     // }));
   }
 
-  editar(idEmpresa:number){
+  editar(objEditarEnpresa:IEmpresa){
     // this.aperturar_modal("Editar Empresa");
     this.aperturar_modal()
     this.tituloLista.emit("ACTUALIZAR EMPRESA");
     
-    if(idEmpresa===null) return; //SI NO EXISTE UN ID NO HACE NADA Y TERMINA
+    if(objEditarEnpresa===null) return; //SI NO EXISTE UN ID NO HACE NADA Y TERMINA
     // const cd=this.empresa.map((o)=>o.id); //ME DEVUELVE TODOS LOS INDICES
     // const cd=this.empresa.find((o)=>o.id); //RETORNA EL PRIMER ELEMENTO DE LA LISTA
     // this.empresa=this.empresa.filter((o)=>o.id==idEmpresa); // FILTRA LA BUSQUEDA DEL OBJETO
 
-    const objetoEmpresa=this.empresa.filter((o)=>o.id==idEmpresa); // FILTRA LA EMPRESA
+    // const objetoEmpresa=this.empresa.filter((o)=>o.id==idEmpresa); // FILTRA LA EMPRESA
     // console.log("CD: ",objetoEmpresa);
-    this.actualizarEmpresa.emit(objetoEmpresa);
+    this.actualizarEmpresa.emit(objEditarEnpresa);
     // console.log("EDITAR ID: ",idEmpresa);
+    this.operacion.emit(false);
   }
   nuevo(){
     this.aperturar_modal()
     this.tituloLista.emit("CREAR EMPRESA");
+    this.operacion.emit(true);
   }
 
   eliminar(idEmpresa:number){
